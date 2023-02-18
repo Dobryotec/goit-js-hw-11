@@ -17,7 +17,7 @@ export default class PicturesApiService {
     //     return hits;s
     //   })
     const res = await axios.get(URL);
-    this.nextPage();
+    // this.nextPage();
     return res.data;
 
     // console.log(res.data.hits);

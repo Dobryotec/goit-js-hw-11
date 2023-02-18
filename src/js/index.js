@@ -56,6 +56,7 @@ async function fetchHits() {
       );
       loadMoreBtn.hide();
     }
+    picturesApiService.nextPage();
     const markup = hits
       .map(
         ({
