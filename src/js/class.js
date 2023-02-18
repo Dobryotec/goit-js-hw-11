@@ -9,7 +9,7 @@ export default class PicturesApiService {
   }
 
   async getPictures() {
-    const URL = `${ENDPOINT}?key=${KEY}&q=${this.query}&image_type=photo&orientation=horizontal&safesearch=true&per_page=100&page=${this.page}`;
+    const URL = `${ENDPOINT}?key=${KEY}&q=${this.query}&image_type=photo&orientation=horizontal&safesearch=true&per_page=40&page=${this.page}`;
     // return fetch(URL)
     //   .then(res => res.json())
     //   .then(({ hits }) => {
@@ -17,7 +17,7 @@ export default class PicturesApiService {
     //     return hits;s
     //   })
     const res = await axios.get(URL);
-    // this.nextPage();
+
     return res.data;
 
     // console.log(res.data.hits);

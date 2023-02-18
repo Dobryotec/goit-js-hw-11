@@ -22,7 +22,7 @@ const loadMoreBtn = new LoadMoreBtn({ selector: '.load-more', isHidden: true });
 
 function onFormClick(event) {
   event.preventDefault();
-  const inputValue = input.value;
+  const inputValue = input.value.trim();
   picturesApiService.query = inputValue;
   clear();
   picturesApiService.resetPage();
@@ -48,13 +48,15 @@ async function fetchHits() {
       loadMoreBtn.hide();
       return;
     }
-    // Notiflix.Notify.success(`Hooray! We found ${totalHits} images.`);
+
     console.log(picturesApiService.page);
     if (picturesApiService.page === Math.ceil(totalHits / 100)) {
       Notiflix.Notify.failure(
         "We're sorry, but you've reached the end of search results."
       );
       loadMoreBtn.hide();
+    } else {
+      Notiflix.Notify.success(`Hooray! We found ${totalHits} images.`);
     }
     picturesApiService.nextPage();
     const markup = hits
